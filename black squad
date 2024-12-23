@@ -1,0 +1,28 @@
+#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+ 
+; SS
+^!p::Suspend
+ 
+; NR
+~LButton::
+while GetKeyState("LButton")
+{
+DllCall("mouse_event", uint, 1, int, 0, int, 2, uint, 0, int, 0)
+Sleep, 15
+DllCall("mouse_event", uint, 1, int, 0, int, 2, uint, 0, int, 0)
+Sleep, 5
+}
+return
+ 
+; Nades
+~MButton::
+if GetKeyState("LButton")
+{
+Sleep, 3000
+MouseClick, Left,,,,, U
+}
+return
+ 
+Insert::ExitApp
